@@ -44,7 +44,7 @@ Deformable convolutional network : 객체의 크기에 맞는 필터를 학습�
 
 영역제안+CNN=RCNN기법
 
-![image-20210718214004151](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718214004151.png)
+![image](https://user-images.githubusercontent.com/60170358/126070075-582ac9f4-881c-4f5d-b5e1-375510d76392.png)
 
 
 
@@ -63,7 +63,7 @@ RCNN은 입력값으로 부터 선택적 탐색을 이용하여 객체 후보 �
 
 -> 하지만 추출된 수천개의 영역제안 값들은 모두 CNN의 입력값으로 들어가기 때문에 시간이 오래 걸린다는 단점 
 
-![image-20210718214809674](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718214809674.png)
+![image](https://user-images.githubusercontent.com/60170358/126070085-c45b3d91-17e3-4770-ae9d-c59574bd9b4e.png)
 
 -> RCNN에 영역제안마다 합성곱연산을 하는 대신, 입력이미지 한번에 CNN을 적용하고, 객체를 판별하는 관심 영역 풀링을 도입한 **Fast RCNN제안**
 
@@ -81,7 +81,7 @@ pooling : Convolution을 거쳐서 나온 activation maps이 있을 때, 이를 
 
 객체영역 후보 검출을 위한 별도의 과정을 거치지 않고, CNN+RPN 네트워크를 추가하는 **Faster RCNN 제안**
 
-![image-20210718220238382](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718220238382.png)
+![image](https://user-images.githubusercontent.com/60170358/126070091-4fa3ee66-5d99-4462-94f7-473510aff3fa.png)
 
 -> 따라서, Faster RCNN은 RPN자체를 학습 , 즉 선택적 탐색(selective search)없이 RPN을 학습하는 구조이고, RPN은 CNN으로부터 나온 feature map을 input, 영역제안을 output으로 하는 네트워크이다.
 
@@ -91,15 +91,16 @@ RPN은 객체후보 영역을 탐색하기 위해 sliding window마다 다양한
 
  슬라이딩 윈도우마다 객체인식을 위한 2k개의 score와  + 회귀를 위한 4k개의 좌표가 생성되어 => anchor마다 p/n라벨로 넣고
 
-이를 트레이닝 셋으로 분류기와 regressor를 학습( 128 × 128, 256 × 256, 512 × 512 3개의 크기와 2:1, 1:1, 1:2 3개의 비율을 이용하여 9개의 사전 정의된 앵커를 사용)![image-20210718220249215](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718220249215.png)
+이를 트레이닝 셋으로 분류기와 regressor를 학습( 128 × 128, 256 × 256, 512 × 512 3개의 크기와 2:1, 1:1, 1:2 3개의 비율을 이용하여 9개의 사전 정의된 앵커를 사용)
 
+![image](https://user-images.githubusercontent.com/60170358/126070095-c6598624-e8db-40cc-862d-cf2ca6170502.png)
 
 
 **2.5 YOLO**
 
 객체탐색문제를 영상으로부터 경계박스좌표와 객체클래스 확률값을 추정하는 단순한 구조의 회귀문제로 해결한 실시간 객체 탐색기법인 **YOLO 제안**
 
-![image-20210718220456440](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718220456440.png)
+![image](https://user-images.githubusercontent.com/60170358/126070101-5f0b360f-7b9c-41e0-9dea-2076b679a752.png)
 
 입력영상을 S*S그리드로 나눈후, 각 그리드 셀에서 경계박스와 각 박스에 대해 confidence 값을 추정
 
@@ -121,7 +122,7 @@ RPN은 객체후보 영역을 탐색하기 위해 sliding window마다 다양한
 
 Faster RCNN 픽셀이 객체인지 아닌지를 판단하는 이진 마스크를 추가+관심영역 풀링대신 관심영역 정렬을 사용
 
-![image-20210718221521522](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718221521522.png)
+![image](https://user-images.githubusercontent.com/60170358/126070104-e3cffb38-b6f6-447c-b3ab-a4eaa7eea438.png)
 
 mask RCNN은 RPN으로 부터 얻은 관심영역을 클래스 레이블, 경계박스, 마스크 3개의 브랜치로 나누어 처리
 
@@ -137,11 +138,11 @@ mask RCNN은 RPN으로 부터 얻은 관심영역을 클래스 레이블, 경계
 
 필터의 모양을 변형시켜 객체에 맞는 필터를 사용하는 방법  **Deformable convolution network**
 
-![image-20210718222422509](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718222422509.png)
+![image](https://user-images.githubusercontent.com/60170358/126070110-97686d1d-6837-4b90-aa40-dab3329d1952.png)
 
 deformable convolution : 일반적인 합성곱층과는 다른 합성곱층이 하나 더 존재
 
-![image-20210718222610841](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718222610841.png)
+![image](https://user-images.githubusercontent.com/60170358/126070115-2079b4c1-aea7-4f1b-857d-9eb514ffaad9.png)
 
 conv: 각 입력의 2d offset을 학습하기 위한것 ,계산은 선형보간법으로 이루어짐
 
@@ -151,8 +152,7 @@ offset은 가중치와 함께 역전파 과정에서 같이 학습됨
 
 Mask R-CNN + DC 모형
 
-![image-20210718223038314](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718223038314.png)
-
+![image](https://user-images.githubusercontent.com/60170358/126070120-27159b81-5dd8-4e16-9d8b-d3e2231490d3.png)
 vgg16같은 모형에서 어느층에 offset에 학습시키는지를 정하는것에 따라 결과값이 달라질 수 있음- > 오프셋을 어느 층에 학습시키고 얼마나 오프셋을 학습시키는 것이 성능을 좋게 하는지 확인
 
 (원래의 CNN에서 Receptive Field 에는 정해진 개수의 픽셀들이 입력 이미지를 커버하기 위해서 존재하는데, 이 픽셀들의 위치를 유동적으로 변경하기 위하여 Offset들을 학습하여 적용)
@@ -176,15 +176,9 @@ Vgg16,Vgg19를 사용하여 각각의 모형마다 층별로 DC 네트워크를 
 
 
 **4.2 실험 결과**
+![image](https://user-images.githubusercontent.com/60170358/126070126-94280d03-f134-4070-ae49-9e50b3944937.png)
 
-![image-20210718223839685](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718223839685.png)
-
-![image-20210718223846007](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718223846007.png)
-
-![image-20210718223859554](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718223859554.png)
-
-![image-20210718223914394](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210718223914394.png)
-
+![image](https://user-images.githubusercontent.com/60170358/126070134-2fbc9e5b-2e21-4845-8fbe-0579eea3e91f.png)
 CNN 모형을 VGG16보다 VGG19를 사용했을 때 결과가 더 좋음을 알 수 있었고, 이를 통 해 실험을 설계할 때 어떤 모형을 사용할지 선택하는 것도 실험 결과에 중요한 영향을 끼친다는 것을 알 수 있었다. 또한 기존 Mask R-CNN 방법보다 본 연구에서 제안한 DC+Mask R-CNN 방법이 더 좋은 성능을 가지고 있음을 확인하였다.
 
 
