@@ -16,7 +16,7 @@
 - **Instance Segmentation :** Object Detection과 유사하지만, 다른점은 object의 위치를
   bounding box가 아닌 실제 edge로 찾는 것이다.
 
-
+![image-20210708095134127](C:\Users\chaeh\AppData\Roaming\Typora\typora-user-images\image-20210708095134127.png)
 
 **Object detection에는 1-stage detector, 2-stage detector가 있다.**
 
@@ -141,7 +141,15 @@ Fast RCNN과 달라진 점
 
 **<Mask R-CNN 과정>**
 
-1. 800~1024 사이즈로 이미지를 resize해준다. (using bilinear interpolation)(ResNet 네트워크에서는 이미지 input size가 800~1024일때 성능이 좋다고 알려져있다)
+
+
+###  compute_backbone_shapes로 backbone 네트워크 스테이지의 width, height를 계산
+
+identity_block()과 conv_block()으로 이루어진 Resnet network
+
+1. 800~1024 사이즈로 이미지를 resize해준다. (using bilinear interpolation)(ResNet 네트워크에서는 이미지 input size가 800~1024일때 성능이 좋다고 알려져있다) 
+
+   
 
 2. Backbone network의 인풋으로 들어가기 위해 1024 x 1024의 인풋사이즈로 맞춰준다. (using padding)
 
